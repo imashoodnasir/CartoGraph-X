@@ -1,0 +1,146 @@
+project:
+  name: CartoGen
+  version: "0.1.0"
+
+  title: >
+    Topology-Constrained Generative AI for Automated
+    Multi-Scale Cartographic Generalization of Urban Maps
+
+experiment:
+  runs: 10
+
+  seeds:
+    - 42
+    - 43
+    - 44
+    - 45
+    - 46
+    - 47
+    - 48
+    - 49
+    - 50
+    - 51
+
+datasets:
+
+  os:
+    enabled: true
+    name: "Ordnance Survey Great Britain"
+
+    detailed_source:
+      name: "OS OpenMap Local"
+
+    generalized_sources:
+      - "OS VectorMap District"
+      - "OS Open Zoomstack"
+
+  osm:
+    enabled: true
+    name: "OpenStreetMap"
+
+objects:
+  buildings: true
+  roads: true
+
+scales:
+  source: 10000
+
+  targets:
+    - 25000
+    - 50000
+    - 100000
+
+tiling:
+  tile_size_m: 1000
+  context_buffer_m: 100
+
+geometry:
+  coordinate_normalization: true
+  repair_invalid_geometries: true
+
+topology:
+  relations:
+    - connected_to
+    - adjacent_to
+    - intersects
+    - near
+    - contained_in
+
+  near_distance_m: 20.0
+
+model:
+
+  geometry_encoder:
+    embedding_dim: 256
+
+  graph_transformer:
+    hidden_dim: 256
+    num_layers: 4
+    num_heads: 8
+    dropout: 0.1
+
+  scale_embedding:
+    embedding_dim: 256
+
+  operation_head:
+    enabled: true
+
+  generative_model:
+    type: "conditional_latent_diffusion"
+
+training:
+  epochs: 200
+  batch_size: 16
+  learning_rate: 0.0001
+  weight_decay: 0.00001
+
+  early_stopping:
+    enabled: true
+    patience: 25
+
+loss:
+
+  generation: 1.0
+  geometry: 1.0
+  topology: 1.0
+  cartographic: 1.0
+  operation: 1.0
+  scale: 0.5
+
+evaluation:
+
+  geometry:
+    - iou
+    - chamfer
+    - hausdorff
+    - area_error
+    - orientation_error
+    - shape_similarity
+
+  road:
+    - connectivity
+    - intersection_preservation
+    - path_similarity
+    - length_error
+    - component_error
+
+  topology:
+    - adjacency_preservation
+    - connectivity_preservation
+    - intersection_preservation
+    - containment_preservation
+    - crossing_consistency
+    - topology_preservation_rate
+    - topology_violation_rate
+
+  cartography:
+    - building_building_conflict
+    - building_road_conflict
+    - road_road_conflict
+    - minimum_distance_violation
+    - invalid_geometry_rate
+
+output:
+  vector_format: "GPKG"
+  save_predictions: true
+  save_checkpoints: true

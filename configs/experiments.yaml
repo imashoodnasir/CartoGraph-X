@@ -1,0 +1,84 @@
+tables:
+
+  T01:
+    name: Dataset Statistics
+    runs_required: false
+
+  T02:
+    name: Overall Generalization Performance
+    runs_required: true
+
+  T03:
+    name: Building Generalization
+    runs_required: true
+
+  T04:
+    name: Road Generalization
+    runs_required: true
+
+  T05:
+    name: Multi-Scale Generalization
+    runs_required: true
+
+  T06:
+    name: Topology Preservation
+    runs_required: true
+
+  T07:
+    name: Cartographic Conflict Analysis
+    runs_required: true
+
+  T08:
+    name: Generalization Operation Recognition
+    runs_required: true
+
+  T09:
+    name: Cross-City Generalization
+    runs_required: true
+
+  T10:
+    name: Cross-Dataset OS-to-OSM Generalization
+    runs_required: true
+
+  T11:
+    name: Architecture Ablation
+    runs_required: true
+
+  T12:
+    name: Loss Ablation
+    runs_required: true
+
+  T13:
+    name: Computational Efficiency
+    runs_required: true
+
+  T14:
+    name: Robustness Analysis
+    runs_required: true
+
+
+figures:
+
+  F01:
+    name: CartoGen Architecture
+
+  F02:
+    name: Multi-Scale Qualitative Results
+
+  F03:
+    name: Baseline Visual Comparison
+
+  F04:
+    name: Topology Preservation Examples
+
+  F05:
+    name: Scale Response Curves
+
+  F06:
+    name: Generalization Operation Visualization
+
+  F07:
+    name: OS-to-OSM External Generalization
+
+  F08:
+    name: Failure Cases

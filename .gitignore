@@ -1,0 +1,59 @@
+﻿# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Raw and processed geographic datasets
+data/
+datasets/
+*.gpkg
+*.shp
+*.shx
+*.dbf
+*.parquet
+*.feather
+*.pbf
+*.osm
+*.osm.pbf
+
+# Model checkpoints
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.onnx
+
+# Experimental output
+results/
+tmp/
+logs/
+outputs/
+*.log
+
+# Large binary intermediate files
+*.npy
+*.npz
+*.pkl
+*.pickle
+*.joblib
+
+# Large result workbooks
+*.xlsx
+
+# Sensitive information
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# IDE and operating system
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
